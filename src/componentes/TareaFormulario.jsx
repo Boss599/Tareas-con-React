@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -8,18 +9,20 @@ const [input, setInput] = useState('');
 
 const manejarCambio = e =>{
 setInput(e.target.value);
-console.log(e.target.value);
+//console.log(e.target.value);
 }
 
 
 
 const manejarEnvio = e =>{
     e.preventDefault();
-    console.log('Enviando Forumulario')
+    
     const tareaNueva = {
-        id:'34545',
-        texto: 'Hola'
+        id:uuidv4(),
+        texto: input,
+        completada:false
     }
+    props.onSubmit(tareaNueva);
 }
 
 
